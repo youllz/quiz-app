@@ -164,8 +164,10 @@
   }
 
   .question {
-    justify-content: space-around;
+    
     gap: 2rem;
+    margin-top: 4rem;
+    flex-wrap: nowrap;
     flex-wrap: nowrap;
   }
 
@@ -179,5 +181,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+
+  @media screen and (max-width: 700px) {
+    .option {
+      flex-direction: column;
+    }
+
+
+    .question > div {
+      width: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 850px) {
+    .question > div {
+      width: 100%;
+      
+    }
+
+  }
+  @media screen and (max-width: 600px) {
+  
+
+    .question {
+      flex-direction: column;
+    }
+
   }
 </style>

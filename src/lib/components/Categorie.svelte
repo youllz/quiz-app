@@ -131,4 +131,11 @@
   input[type='radio']:checked {
     border: 5px solid rgb(114, 76, 249);
   }
+
+  @media screen and (max-width: 850px) {
+    .container {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+  }
 </style>

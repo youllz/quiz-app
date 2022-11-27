@@ -37,4 +37,12 @@
     font-size: 4rem;
     color: #957fefde;
   }
+
+
+  @media screen and (max-width: 850px) {
+    .container {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+  }
 </style>
