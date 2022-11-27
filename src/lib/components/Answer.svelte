@@ -87,7 +87,7 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
-    height: 33rem;
+    height: 35rem;
   }
   label {
     width: 100%;

@@ -40,10 +40,10 @@
 <style>
   .container {
     width: 100%;
-    height: 33rem;
+    height: 35rem;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
     justify-content: center;
     background-color: #f8f9fa;
     padding: 2rem;

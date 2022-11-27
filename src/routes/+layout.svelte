@@ -73,7 +73,7 @@
     @media screen and (max-width: 960px) {
 
     :global(html) {
-      font-size: 55%;
+      font-size: 60%;
     }
     }
     @media screen and (max-width: 635px) {
