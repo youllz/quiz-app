@@ -1,6 +1,7 @@
 <script>
   import {darkMode} from '$lib/store'
   import { fly, fade } from 'svelte/transition';  
+  export let navToggle 
   let dark = false
   $: darkMode.set(dark)
 
@@ -10,8 +11,8 @@
 
 
 
-<header>
-  <div>
+<header class:navToggle>
+  <div class="logo">
     <svg width="2.2rem" height="2.2rem" viewBox="0 0 24 24"
       ><g fill="none"
         ><path
@@ -73,6 +74,7 @@
     background-color: rgb(114, 76, 249);
     color: #fff;
     border-radius: 10px;
+    transition: all 0.3s ease;
     
   }
 
@@ -110,5 +112,40 @@
     text-decoration: none;
     color: inherit;
   }
+
+
+  .navToggle {
+  transform: translateY(20%);
+ }
+
+
+
+  @media screen and (max-width: 850px) {
+    header {
+      width: 60%;
+      height: 7rem;
+      position: absolute;
+      transform: translateY(-100%);
+      margin-top: 0;
+      justify-content: space-around;
+      align-items: center;
+      padding: 1rem;
+    }
+    
+    nav {
+      justify-content: center;
+      align-items: center;
+      margin-top: 2rem;
+      
+      
+    }
+    
+    .logo {
+      margin-top: 2rem;
+
+    }
+
+    
+}
 
 </style>

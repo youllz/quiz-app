@@ -85,6 +85,7 @@
     align-items: center;
     gap: 4rem;
     flex-direction: column;
+    margin-top: 3rem;
   }
 
   .table-container {
