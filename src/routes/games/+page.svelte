@@ -166,10 +166,11 @@
   .question {
     justify-content: space-around;
     gap: 2rem;
+    flex-wrap: nowrap;
   }
 
   .question > div {
-    width: 49%;
+    width: 48%;
   }
 
   .loader, .error {

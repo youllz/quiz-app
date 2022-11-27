@@ -67,6 +67,7 @@
       #ab64e5,
       #c77dff
     );
+    -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
@@ -92,5 +93,9 @@
     position: absolute;
     bottom: -2px;
     left: 0;
+  }
+
+  progress {
+    width: 100%;
   }
 </style>
