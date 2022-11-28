@@ -16,6 +16,7 @@
     stRsultData,
     stProgress
   } from "$lib/store.js";
+  import {darkTheme} from '$lib/theme'
   import { fly } from "svelte/transition";
     import Results from "../../lib/components/Results.svelte";
     import Load from "../../lib/components/Load.svelte";
@@ -83,7 +84,7 @@
 
 </script>
 
-<main>
+<main class:bg={$darkTheme}>
   {#if !$stShowQuiz && !$stQuiz}
     <section class="option" transition:fly={{ x: -40, duration: 500 }} class:disable={$stQuiz}>
       <Categorie />
@@ -152,7 +153,10 @@
     flex-direction: column;
     gap: 7rem;
     align-items: center;
+    background-color: var(--light-bg);
   }
+
+
 
   section {
     width: 100%;
@@ -183,6 +187,12 @@
     align-items: center;
   }
 
+  /* darkTheme */
+
+  .bg {
+    background-color: var(--dark-bg);
+  }
+
 
   @media screen and (max-width: 700px) {
     .option {
@@ -201,6 +211,10 @@
       
     }
 
+    main {
+      height: 100vh;
+    }
+
   }
   @media screen and (max-width: 600px) {
   
@@ -210,4 +224,8 @@
     }
 
   }
+
+
+
+
 </style>

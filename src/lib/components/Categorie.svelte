@@ -1,4 +1,5 @@
 <script>
+  import {darkTheme} from '$lib/theme'
   import {stCategory} from '$lib/store.js'
   const optionsDatas = [
     {
@@ -70,11 +71,11 @@
 </script>
 
 <div class="container">
-  <h1>CATEGORIES</h1>
+  <h1 class:text-color={$darkTheme}>CATEGORIES</h1>
   <div class="categories-box">
     {#each optionsDatas as data}
     
-    <label for="{data.id}">
+    <label for="{data.id}" class:text-color={$darkTheme}>
       <span>
         {@html data.icone}
       </span>
@@ -116,9 +117,13 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    background-color: #957fefde;
-    color: #fff;
+    background-color: var(--light-input);
+    color: var(--light-main-text);
     padding: 10px;
+  }
+
+  h1 {
+    color: var(--light-main-text);
   }
 
   span {
@@ -128,8 +133,14 @@
 
   }
 
+
+  /* dark theme */
+  .text-color {
+    color: var(--dark-main-text);
+  }
+
   input[type='radio']:checked {
-    border: 5px solid rgb(114, 76, 249);
+    border: 5px solid var(--light-paragraph);
   }
 
   @media screen and (max-width: 850px) {

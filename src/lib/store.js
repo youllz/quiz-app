@@ -3,7 +3,8 @@
 import { writable } from "svelte/store";
 
 
-export const  darkMode = writable(false)
+
+// export const  darkMode = writable(false)
 
 
 /* option */
@@ -87,5 +88,7 @@ export const stQuiz = finishQuiz()
 
 /* result data */
 export const stRsultData = writable([])
+
+
 
 

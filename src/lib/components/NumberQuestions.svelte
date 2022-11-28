@@ -1,4 +1,5 @@
 <script>
+  import { darkTheme } from "$lib/theme.js";
   import { stNumberOfQuestion } from "$lib/store.js";
   let numberOfQuestion = 5
 
@@ -6,12 +7,12 @@
 </script>
 
 <div class="container">
-  <h1>NUMBER OF QUESTIONS</h1>
+  <h1 class:text-color={$darkTheme}>NUMBER OF QUESTIONS</h1>
   <div class="box">
     <input type="range" name="number" id="number" min="3" max="20" bind:value={numberOfQuestion}/>
   </div>
   <span>
-    <h1 class="number">{numberOfQuestion}</h1>
+    <h1 class="number" class:text-color={$darkTheme}>{numberOfQuestion}</h1>
   </span>
 </div>
 
@@ -25,19 +26,28 @@
     width: 33.33%;
   }
 
+  h1 {
+    color: var(--light-main-text);
+  }
+
   input {
     appearance: none;
     height: 5px;
     width: 15rem;
-    background-color: #957fefde;
+    background-color:var(--light-input);
     outline: none;
   }
 
   .number {
     font-size: 4rem;
-    color: #957fefde;
+    color:var(--light-main-text);
   }
 
+
+  /* dark theme */
+  .text-color {
+    color: var(--dark-main-text);
+  }
 
   @media screen and (max-width: 850px) {
     .container {

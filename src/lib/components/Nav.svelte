@@ -1,9 +1,11 @@
 <script>
-  import {darkMode} from '$lib/store'
+  import {darkTheme} from '$lib/theme'
   import { fly, fade } from 'svelte/transition';  
   export let navToggle 
   let dark = false
-  $: darkMode.set(dark)
+  $: darkTheme.set(dark)
+
+  
 
 
 
@@ -11,7 +13,7 @@
 
 
 
-<header class:navToggle>
+<header class:navToggle class:text-color={$darkTheme}>
   <div class="logo">
     <svg width="2.2rem" height="2.2rem" viewBox="0 0 24 24"
       ><g fill="none"
@@ -26,7 +28,7 @@
   </div>
   <nav>
     <div class="dark-box">
-      {#if !$darkMode}
+      {#if !$darkTheme}
       <span in:fly="{{ x: -20, duration: 1000 }}" out:fade title="dark">
         <svg width="2.2rem" height="2.2rem" viewBox="0 0 24 24"
           ><path
@@ -71,8 +73,9 @@
     align-items: center;
     padding: 0 20rem;
     margin-top: 2rem;
-    background-color: rgb(114, 76, 249);
-    color: #fff;
+    /* background-color: rgb(114, 76, 249); */
+    background-color: var(--light-nav);
+    color: var(--light-main-text);
     border-radius: 10px;
     transition: all 0.3s ease;
     
@@ -112,6 +115,13 @@
     text-decoration: none;
     color: inherit;
   }
+
+
+  /* dark theme class */
+  .text-color {
+    color: var(--dark-main-text);
+  }
+ 
 
 
   .navToggle {

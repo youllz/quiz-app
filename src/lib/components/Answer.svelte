@@ -1,5 +1,6 @@
 <script>
   import { stNumberOfQuestion, stUserAnswers } from "$lib/store.js";
+  import {darkTheme} from '$lib/theme'
 
   export let incorrectAnswers = [];
   export let correctAnswer;
@@ -50,10 +51,10 @@
   }
 </script>
 
-<div class="container">
+<div class="container" class:bg-card={$darkTheme}>
   {#each incorrectAnswers as item, i}
     <label for={item} style="--order: {randomOrder[i]}">
-      <span>
+      <span class:paragraph-color={$darkTheme}>
         {item}
       </span>
       <input
@@ -66,8 +67,8 @@
     </label>
   {/each}
 
-  <label for={correctAnswer} style="--order: {randomOrder[4]}">
-    <span>
+  <label for={correctAnswer} style="--order: {randomOrder[4]}" >
+    <span class:paragraph-color={$darkTheme}>
       {correctAnswer}
     </span>
     <input
@@ -88,6 +89,7 @@
     justify-content: center;
     gap: 20px;
     height: 35rem;
+    background-color: var(--light-card-bg);
   }
   label {
     width: 100%;
@@ -96,10 +98,14 @@
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    background-color: #f8f9fa;
+    background-color: transparent;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.255);
     transition: all 0.3s ease;
     order: var(--order);
+  }
+
+  label span {
+    color: var(--light-paragraph);
   }
 
   .container label:nth-child(1) {
@@ -126,10 +132,20 @@
   }
 
   input[type="radio"]:checked {
-    border: 5px solid rgb(114, 76, 249);
+    border: 5px solid var(--light-input);
   }
 
   input[type="radio"] {
-    border: 1px solid rgb(114, 76, 249);
+    border: 1px solid var(--light-input);
+  }
+
+  /* dark theme */
+
+  .bg-card {
+    background-color: var(--dark-bg-card);
+  }
+
+  .paragraph-color {
+    color: var(--dark-paragraph);
   }
 </style>

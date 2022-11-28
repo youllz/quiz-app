@@ -1,11 +1,13 @@
 <script>
+  import {darkTheme} from '$lib/theme'
+  
   import '../app.scss'
     import Nav from '$lib/components/Nav.svelte';
     let navToggle = false 
 </script>
 
 
-<div class="nav">
+<div class="nav" class:bg={$darkTheme}>
   <Nav {navToggle}/>
   <button class="hamburger" on:click={() => { navToggle = !navToggle}}>
     <span>
@@ -21,6 +23,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--light-bg);
   }
 
 
@@ -33,7 +36,7 @@
     align-self: end;
     padding: 8px;
     border-radius: 20px;
-    background-color: #724cf9;
+    background-color: var( --light-nav);
     transition: all 0.3s ease;
     
   }
@@ -45,6 +48,13 @@
 
   .hamburger:hover {
     transform: scale(1.05);
+  }
+
+
+  /* dark theme */
+
+  .bg {
+    background-color: var(--dark-bg);
   }
 
   /* responsive */

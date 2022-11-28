@@ -21,7 +21,6 @@
     height: 5rem;
     width: 5rem;
     border-radius: 100%;
-    background-color: aliceblue;
     margin: 10px;
     animation-name: load;
     animation-duration: 2s;
@@ -31,14 +30,14 @@
   }
 
   .loader div:nth-child(1) {
-    background-image: linear-gradient(to right top, #10002b, #2d1f4f, #513a77, #7856a0, #a274cb);
+    background-image: linear-gradient(to top, #ff8e3c, #fd7648, #f65e54, #ea4961, #d9376e);
   }
   .loader div:nth-child(2) {
-    background-image: linear-gradient(to right top, #10002b, #2d1f4f, #513a77, #7856a0, #a274cb);
+    background-image: linear-gradient(to top, #ff8e3c, #fd7648, #f65e54, #ea4961, #d9376e);
     animation-delay: -0.6s;
   }
   .loader div:nth-child(3) {
-    background-image: linear-gradient(to right top, #10002b, #2d1f4f, #513a77, #7856a0, #a274cb);
+    background-image: linear-gradient(to top, #ff8e3c, #fd7648, #f65e54, #ea4961, #d9376e);
     animation-delay: -0.9s;
   }
 

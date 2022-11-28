@@ -20,8 +20,6 @@ body {
   font-family: 'Roboto', sans-serif;
   height: 100%;
   overflow: hidden;
-  background-color: #fffffe;
- 
   
 }
 
@@ -38,6 +36,32 @@ input[type="radio"] {
 
 label{
   position: relative;
+}
+
+:root {
+  /* dark theme */
+  --dark-bg: #0f0e17;
+  --dark-bg-card: #0f0e17af;
+  --dark-btn: #ff8906;
+  --dark-btn-text: #fffffe;
+  --dark-main-text: #fffffe;
+  --dark-nav: #f25f4c;
+  --dark-input: #e53170;
+  --dark-paragraph: #a7a9be;
+  --dark-highlight: #ff8906;
+  
+  /* light theme */
+  --light-nav: #f25f4c;
+  --light-bg: #eae4e9;
+  --light-main-text: #0d0d0d;
+  --light-input: #e53170;
+  --light-btn: #ff8906;
+  --light-paragraph: #2a2a2a;
+  --light-card-bg: #eff0f3;
+
+
+
+
 }
 
 /* light */

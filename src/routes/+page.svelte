@@ -39,7 +39,7 @@
   div {
     height: 30rem;
     width: 45rem;
-    background-color: rgb(114, 76, 249);
+    background-color: var(--light-card-bg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,7 +51,7 @@
     text-align: center;
     font-size: 3rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--light-main-text);
     letter-spacing: 1.2px;
     line-height: 1.1;
 

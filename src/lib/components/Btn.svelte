@@ -1,4 +1,5 @@
 <script>
+  import {darkTheme} from '$lib/theme'
   import { createEventDispatcher } from "svelte";
 
   const dispatch = createEventDispatcher();
@@ -8,7 +9,7 @@
   }
 </script>
 
-<button on:click={showQuiz}>
+<button class:text-color={$darkTheme} on:click={showQuiz}>
   <slot />
 </button>
 
@@ -17,8 +18,8 @@
     height: 5rem;
     width: 10rem;
     padding: 10px;
-    background-color: rgb(114, 76, 249);
-    color: #fff;
+    background-color: var(--light-btn);
+    color: var(--light-main-text);
     cursor: pointer;
     border: none;
     outline: none;
@@ -34,5 +35,10 @@
 
   button:hover {
     transform: scale(0.9);
+  }
+
+  /* dark theme */
+  .text-color {
+    color: var(--dark-main-text);
   }
 </style>

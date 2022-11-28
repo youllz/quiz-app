@@ -39,13 +39,6 @@
     font-weight: 700;
     background-clip: text;
     color: transparent;
-    background-image: linear-gradient(
-      to right,
-      #5a189a,
-      #7532b2,
-      #904bcb,
-      #ab64e5,
-      #c77dff
-    );
+    background-image: linear-gradient(to top, #ff8e3c, #fd7648, #f65e54, #ea4961, #d9376e);
   }
 </style>

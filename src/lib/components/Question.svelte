@@ -1,40 +1,37 @@
 <script>
-  import {quizMounted, stProgress} from '$lib/store'
-    import { onMount } from 'svelte';
-    import { tweened } from 'svelte/motion';
-    import { cubicOut } from 'svelte/easing';
+  import {darkTheme} from '$lib/theme'
+  import { quizMounted, stProgress } from "$lib/store";
+  import { onMount } from "svelte";
+  import { tweened } from "svelte/motion";
+  import { cubicOut } from "svelte/easing";
 
-    
-    
-    onMount(() => {
-      quizMounted.set(true)
-    })
-    
-    export let category
-    export let difficulty
-    export let question
-    export let progressValue
+  onMount(() => {
+    quizMounted.set(true);
+  });
 
-    const Progress = tweened(0, {
-      duration: 400,
-      easing: cubicOut
-    })
+  export let category;
+  export let difficulty;
+  export let question;
+  export let progressValue;
 
-    $: Progress.set(progressValue)
+  const Progress = tweened(0, {
+    duration: 400,
+    easing: cubicOut,
+  });
 
-  
+  $: Progress.set(progressValue);
 </script>
 
-<div class="container">
+<div class="container" class:bg-card={$darkTheme}>
   <div class="info">
-    <h2>{category}</h2>
-    <h2>{difficulty}</h2>
+    <h2  class:text-color={$darkTheme}>{category}</h2>
+    <h2 class:text-color={$darkTheme}>{difficulty}</h2>
   </div>
   <h1>{$stProgress + 1}</h1>
-  <p>
+  <p class:paragraph-color={$darkTheme}>
     {question}
   </p>
-  <progress max="320" value="{$Progress}"  > </progress>
+  <progress max="320" value={$Progress} />
 </div>
 
 <style>
@@ -45,9 +42,9 @@
     flex-direction: column;
     gap: 2rem;
     justify-content: center;
-    background-color: #f8f9fa;
+    background-color: var(--light-card-bg);
     padding: 2rem;
-    box-shadow: 0px 0px 10px rgb(114, 76, 249);
+    box-shadow: 0px 0px 10px var(--light-main-text);
     border-radius: 10px;
   }
 
@@ -60,12 +57,12 @@
     font-size: 5rem;
     font-weight: 700;
     background-image: linear-gradient(
-      to right,
-      #5a189a,
-      #7532b2,
-      #904bcb,
-      #ab64e5,
-      #c77dff
+      to top,
+      #ff8e3c,
+      #fd7648,
+      #f65e54,
+      #ea4961,
+      #d9376e
     );
     -webkit-background-clip: text;
     -webkit-background-clip: text;
@@ -77,6 +74,7 @@
     position: relative;
     padding: 5px 0;
     height: auto;
+    color: var(--light-main-text);
   }
 
   .info {
@@ -89,7 +87,7 @@
     content: "";
     width: 100%;
     height: 3px;
-    background-image: linear-gradient(to right, #5a189a, #7532b2, #904bcb, #ab64e5, #c77dff);
+    background-color: var(--light-btn);
     display: inline-block;
     position: absolute;
     bottom: -2px;
@@ -100,10 +98,45 @@
     width: 100%;
   }
 
+  progress::-webkit-progress-bar {
+    background-color: var(--dark-paragraph);
+  }
 
-  
+  progress::-webkit-progress-value {
+    background-color: var(--light-nav) !important;
+  }
+
+  /* For Firefox */
+  progress {
+    background-color: var(--dark-paragraph);
+  }
+
+  progress::-moz-progress-bar {
+    background-color: var(--light-nav) !important;
+  }
+
+  /* For IE10 */
+  progress {
+    background-color: var(--dark-paragraph);
+  }
 
   progress {
-    width: 100%;
+    background-color: var(--light-nav);
   }
+
+
+  /* dark theme */
+  .bg-card {
+    background-color: var(--dark-bg-card);
+  }
+
+  .text-color {
+    color: var(--dark-main-text);
+  }
+
+  .paragraph-color {
+    color: var(--dark-paragraph);
+  }
+
+ 
 </style>

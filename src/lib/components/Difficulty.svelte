@@ -1,4 +1,5 @@
 <script>
+  import {darkTheme} from '$lib/theme'
     import {stDifficulty} from '../store'
 
   const difficulty = ['easy', 'medium', 'hard']
@@ -7,14 +8,14 @@
   $: stDifficulty.set(difficultyValue)
 
 
-</script>
+</script> 
 
 
 <div class="container">
-  <h1>DIFFICULTY</h1>
+  <h1 class:text-color={$darkTheme}>DIFFICULTY</h1>
   <div class="difficulty-box">
     {#each difficulty as item}
-    <label for="{item}">
+    <label for="{item}" class:text-color={$darkTheme}>
       <span>
         {item}
       </span>
@@ -34,6 +35,10 @@
     flex-wrap: wrap;
     width: 33.33%;
   }
+
+  h1 {
+    color: var(--light-main-text);
+  }
   
   .difficulty-box {
     display: flex;
@@ -51,8 +56,8 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    background-color: #957fefde;
-    color: #fff;
+    background-color: var(--light-input);
+    color: var(--light-main-text);
     padding: 10px;
   }
   span {
@@ -63,7 +68,12 @@
   }
 
   input[type='radio']:checked {
-    border: 5px solid rgb(114, 76, 249);
+    border: 5px solid var(--light-main-text);
+  }
+
+  /* dark theme */
+  .text-color {
+    color: var(--dark-main-text);
   }
 
   @media screen and (max-width: 850px) {
