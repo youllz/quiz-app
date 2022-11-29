@@ -1,11 +1,12 @@
 <script>
     import Btn from "../lib/components/Btn.svelte";
+    import { darkTheme } from "$lib/theme";
 
 </script>
-<section>
+<section class:bg={$darkTheme}>
 
-<div>
-  <h1>
+<div class:bg-card={$darkTheme}>
+  <h1 class:text={$darkTheme}>
     Tester vos connaissance avec cette petite quiz app. <br> Choisser une categorie, la difficultee et allez y
   </h1>
 </div>
@@ -57,5 +58,19 @@
 
   }
 
+
+  /* dark theme */
+  .bg {
+    background-color: var(--dark-bg);
+  }
+
+  .bg-card {
+    background-color: var(--dark-bg-card);
+  }
+
+
+  .text {
+    color: var(--dark-input);
+  }
   
 </style>

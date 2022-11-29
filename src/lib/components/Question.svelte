@@ -111,9 +111,9 @@
     background-color: var(--dark-paragraph);
   }
 
-  progress::-moz-progress-bar {
+  /* progress::-moz-progress-bar {
     background-color: var(--light-nav) !important;
-  }
+  } */
 
   /* For IE10 */
   progress {
