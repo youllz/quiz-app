@@ -11,10 +11,14 @@
 
 .loader {
     height: 100%;
-    width: 100%;
+    width: 99vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .loader div {

@@ -3,6 +3,9 @@
     import { darkTheme } from "$lib/theme";
 
 </script>
+<svelte:head>
+  <title>home </title>
+</svelte:head>
 <section class:bg={$darkTheme}>
 
 <div class:bg-card={$darkTheme}>
@@ -36,6 +39,7 @@ Choose a category, the difficulty and go
     align-content: flex-start;
     gap: 3rem;
     padding-top: 10rem;
+    background-color: var(--light-bg);
   }
 
   div {

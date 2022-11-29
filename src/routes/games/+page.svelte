@@ -85,6 +85,10 @@
   }
 </script>
 
+<svelte:head>
+  <title>quiz game </title>
+</svelte:head>
+
 <main class:bg={$darkTheme}>
   {#if !$stShowQuiz && !$stQuiz}
     <section
@@ -185,7 +189,7 @@
   .loader,
   .error {
     height: 70vh;
-    width: 100%;
+    width: 99vw;
     display: flex;
     justify-content: center;
     align-items: center;
