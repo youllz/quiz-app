@@ -7,7 +7,8 @@
 
 <div class:bg-card={$darkTheme}>
   <h1 class:text={$darkTheme}>
-    Tester vos connaissance avec cette petite quiz app. <br> Choisser une categorie, la difficultee et allez y
+    Test your knowledge with this little quiz App. <br>
+Choose a category, the difficulty and go
   </h1>
 </div>
 

@@ -15,58 +15,47 @@
     stQuiz,
     stRsultData,
     stProgress,
-    resetquizProgress
+    resetquizProgress,
   } from "$lib/store.js";
-  import {darkTheme} from '$lib/theme'
+  import { darkTheme } from "$lib/theme";
   import { fly } from "svelte/transition";
-    import Results from "../../lib/components/Results.svelte";
-    import Load from "../../lib/components/Load.svelte";
-    import ErrorC from "../../lib/components/ErrorC.svelte";
+  import Results from "../../lib/components/Results.svelte";
+  import Load from "../../lib/components/Load.svelte";
+  import ErrorC from "../../lib/components/ErrorC.svelte";
 
-  
-   
-  
   async function getQuizData() {
     const url = `https://the-trivia-api.com/api/questions?categories=${$stCategory}&limit=${$stNumberOfQuestion}&difficulty=${$stDifficulty}`;
     const res = await fetch(url);
     const resJson = res.json();
 
-    if(res.ok) {
-      stRsultData.set(resJson)
+    if (res.ok) {
+      stRsultData.set(resJson);
       return resJson;
-
-    }  else {
-			throw new Error(text);
-		}
-    
+    } else {
+      throw new Error(text);
+    }
   }
-  
-    let quizProgress = 0
 
-    function resetProgress () {
-      quizProgress = 0
+  let quizProgress = 0;
+
+  function resetProgress() {
+    quizProgress = 0;
+  }
+
+  $: if ($resetquizProgress) {
+    resetProgress();
+  }
+
+  function getNextQuiz() {
+    if ($stProgress === $stNumberOfQuestion - 1) {
+      stQuiz.end();
+      resetquizProgress.reset();
+      return;
+    } else {
+      quizProgress++;
+      stProgress.set(quizProgress);
     }
-
-
-
-    $: if($resetquizProgress) {
-      resetProgress()
-    }
-
-    $: console.log(quizProgress)
-  
-  
-    function getNextQuiz () {
-      if($stProgress === $stNumberOfQuestion - 1) {
-        stQuiz.end()
-        resetquizProgress.reset()
-        return
-      }
-      else {
-        quizProgress++
-        stProgress.set(quizProgress)
-      }
-    }
+  }
 
   /* next question over time */
 
@@ -79,7 +68,7 @@
     function getTime() {
       if (progress === time) {
         progress = 0;
-        getNextQuiz()
+        getNextQuiz();
         clearInterval(id);
       } else {
         progress++;
@@ -88,19 +77,21 @@
   }
 
   $: {
-    if($quizMounted) {
-      if (($stProgress - 1) <= ($stNumberOfQuestion - 1)) {
-        quizTime()
+    if ($quizMounted) {
+      if ($stProgress - 1 <= $stNumberOfQuestion - 1) {
+        quizTime();
       }
     }
   }
-
-
 </script>
 
 <main class:bg={$darkTheme}>
   {#if !$stShowQuiz && !$stQuiz}
-    <section class="option" transition:fly={{ x: -40, duration: 500 }} class:disable={$stQuiz}>
+    <section
+      class="option"
+      transition:fly={{ x: -40, duration: 500 }}
+      class:disable={$stQuiz}
+    >
       <Categorie />
 
       <Difficulty />
@@ -113,12 +104,16 @@
         <Btn on:onShow={stShowQuiz.display}>STARTED</Btn>
       </div>
     {/if}
-  {:else }
-    <section class="question" transition:fly={{ x: -40, duration: 500 }} class:disable={$stQuiz}>
+  {:else}
+    <section
+      class="question"
+      transition:fly={{ x: -40, duration: 500 }}
+      class:disable={$stQuiz}
+    >
       {#await getQuizData()}
-        <div class="loader"><Load/></div>
+        <div class="loader"><Load /></div>
       {:then datas}
-      <span style="display: none;"> {stRsultData.set(datas) }</span>
+        <span style="display: none;"> {stRsultData.set(datas)}</span>
         <div>
           <Question
             category={datas[quizProgress].category}
@@ -135,31 +130,26 @@
             {quizProgress}
           />
         </div>
-        {:catch error}
+      {:catch error}
         <div class="error">
-          <ErrorC error={error}/>
+          <ErrorC {error} />
         </div>
-        
-
       {/await}
     </section>
   {/if}
 
   {#if $stQuiz}
-    
-  <section >
-    <Results />
-  </section>
+    <section>
+      <Results />
+    </section>
   {/if}
-  
 </main>
-
 
 <style>
   .disable {
     display: none;
   }
-  
+
   main {
     height: calc(100vh - 4rem);
     width: 100vw;
@@ -172,8 +162,6 @@
     background-color: var(--light-bg);
   }
 
-
-
   section {
     width: 100%;
     display: flex;
@@ -184,7 +172,6 @@
   }
 
   .question {
-    
     gap: 2rem;
     margin-top: 4rem;
     flex-wrap: nowrap;
@@ -195,7 +182,8 @@
     width: 48%;
   }
 
-  .loader, .error {
+  .loader,
+  .error {
     height: 70vh;
     width: 100%;
     display: flex;
@@ -209,39 +197,28 @@
     background-color: var(--dark-bg);
   }
 
-
   @media screen and (max-width: 700px) {
     .option {
       flex-direction: column;
     }
 
-
     .question > div {
       width: 100%;
     }
   }
-  
+
   @media screen and (max-width: 850px) {
     .question > div {
       width: 100%;
-      
     }
 
     main {
       height: 100vh;
     }
-
   }
   @media screen and (max-width: 600px) {
-  
-
     .question {
       flex-direction: column;
     }
-
   }
-
-
-
-
 </style>
