@@ -14,7 +14,8 @@
     quizMounted,
     stQuiz,
     stRsultData,
-    stProgress
+    stProgress,
+    resetquizProgress
   } from "$lib/store.js";
   import {darkTheme} from '$lib/theme'
   import { fly } from "svelte/transition";
@@ -41,11 +42,24 @@
   }
   
     let quizProgress = 0
+
+    function resetProgress () {
+      quizProgress = 0
+    }
+
+
+
+    $: if($resetquizProgress) {
+      resetProgress()
+    }
+
+    $: console.log(quizProgress)
   
   
     function getNextQuiz () {
-      if(quizProgress === $stNumberOfQuestion - 1) {
+      if($stProgress === $stNumberOfQuestion - 1) {
         stQuiz.end()
+        resetquizProgress.reset()
         return
       }
       else {
@@ -75,7 +89,7 @@
 
   $: {
     if($quizMounted) {
-      if ((quizProgress - 1) <= ($stNumberOfQuestion - 1)) {
+      if (($stProgress - 1) <= ($stNumberOfQuestion - 1)) {
         quizTime()
       }
     }
@@ -125,6 +139,8 @@
         <div class="error">
           <ErrorC error={error}/>
         </div>
+        
+
       {/await}
     </section>
   {/if}
@@ -132,7 +148,7 @@
   {#if $stQuiz}
     
   <section >
-    <Results/>
+    <Results />
   </section>
   {/if}
   

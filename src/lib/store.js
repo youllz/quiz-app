@@ -90,5 +90,18 @@ export const stQuiz = finishQuiz()
 export const stRsultData = writable([])
 
 
+/*  */
+
+function getNextQuestion() {
+  const {subscribe, set, update} = writable(false)
+  return {
+    subscribe,
+    restart: () => update((n )=> true ),
+    reset: () => set(false)
+  }
+}
+export const resetquizProgress = getNextQuestion()
+
+
 
 

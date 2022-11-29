@@ -1,6 +1,6 @@
 <script>
   import {darkTheme} from '$lib/theme'
-  import { quizMounted, stProgress } from "$lib/store";
+  import { quizMounted, stProgress, } from "$lib/store";
   import { onMount } from "svelte";
   import { tweened } from "svelte/motion";
   import { cubicOut } from "svelte/easing";

@@ -9,9 +9,11 @@
     quizMounted,
     stQuiz,
     stProgress,
+    resetquizProgress
   } from "$lib/store.js";
   import Btn from "./Btn.svelte";
   import { darkTheme } from "$lib/theme";
+
 
   let emojis = Array($stRsultData.length);
   let score = 0;
@@ -31,7 +33,10 @@
     }
   }
 
+
+  
   function restart() {
+    resetquizProgress.restart()
     stRsultData.set([]);
     stUserAnswers.set([]);
     stShowQuiz.reset();
@@ -42,6 +47,7 @@
     stQuiz.reset();
     stProgress.set(0);
     score = 0;
+    
   }
 
   verification();
